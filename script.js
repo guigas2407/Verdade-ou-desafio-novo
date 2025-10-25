@@ -1,0 +1,537 @@
+const defaultLists = {
+  facil: {
+    verdade: [
+      "Qual é seu sabor de sorvete favorito?",
+      "Você prefere praia ou montanha?",
+      "Qual foi a última série que você maratonou?",
+      "Qual é a sua comida guilty pleasure?",
+      "Você já cantou no chuveiro hoje?",
+      "Qual é a sua cor favorita?",
+      "Você tem algum apelido engraçado? Qual?",
+      "Qual é a sua bebida preferida?",
+      "Você já fingiu estar ocupado para evitar alguém? Conte.",
+      "Qual emoji você mais usa?",
+      "Qual foi o presente mais legal que recebeu?",
+      "Você prefere cachorro ou gato?",
+      "Qual é sua estação do ano preferida?",
+      "Você tem algum hobby secreto?",
+      "Qual foi a melhor viagem que fez?",
+      "Você já esqueceu o aniversário de alguém importante?",
+      "Qual aplicativo você abre primeiro no celular?",
+      "Você prefere acordar cedo ou dormir tarde?",
+      "Você já assistiu a um filme triste e chorou?",
+      "Qual música te deixa feliz instantaneamente?",
+      "Você coleciona algo?",
+      "Qual língua gostaria de aprender?",
+      "Você prefere cozinhar ou pedir delivery?",
+      "Qual tarefa doméstica você mais odeia?",
+      "Qual foi a última coisa que você pesquisou na internet?",
+      "Você já se inscreveu em algo só por curiosidade e desistiu?",
+      "Qual meme recente você achou engraçado?",
+      "Qual é a sua sobremesa favorita?",
+      "Você prefere festa grande ou encontro pequeno?",
+      "Qual hábito você quer começar?"
+    ],
+    desafio: [
+      "Cante o refrão de uma música por 20 segundos.",
+      "Faça 10 polichinelos agora.",
+      "Imite um animal por 15 segundos.",
+      "Conte uma piada e tente fazer alguém rir.",
+      "Mostre um gesto engraçado que você sabe fazer.",
+      "Dê um abraço em alguém por 5 segundos (consentimento).",
+      "Faça uma careta que ninguém consiga segurar o riso.",
+      "Dance por 30 segundos sem música.",
+      "Finja que está em um comercial e venda um objeto aleatório por 20s.",
+      "Diga o alfabeto ao contrário até a letra M.",
+      "Balance-se como uma árvore por 15 segundos.",
+      "Fale no tom de voz de um personagem famoso por 20s.",
+      "Plante um beijo no ar e faça efeito dramático.",
+      "Faça 5 agachamentos rapidamente.",
+      "Segure uma poses esquisita por 10 segundos.",
+      "Mime que está comendo algo maravilhoso por 20s.",
+      "Faça um som engraçado com a boca e repita três vezes.",
+      "Descreva seu dia usando apenas três palavras.",
+      "Imite alguém presente por 15 segundos (sem ofensas).",
+      "Finja que está congelado por 10 segundos.",
+      "Fale uma frase romântica exagerada de forma dramática.",
+      "Mostre sua melhor dança de comemoração por 15s.",
+      "Dê um tapinha de despedida teatral em alguém (consentimento).",
+      "Descreva seu prato preferido como se fosse um crítico famoso.",
+      "Segure o riso por 20 segundos enquanto os outros tentam te provocar.",
+      "Faça um elogio criativo para a pessoa à sua direita.",
+      "Diga uma rima improvisada sobre alguém no grupo.",
+      "Finja que é um robô por 20 segundos.",
+      "Abra a janela e faça uma saudação exagerada para a rua.",
+      "Faça 10 segundos de poses de modelo."
+    ]
+  },
+  medio: {
+    verdade: [
+      "Conte uma situação embaraçosa que aconteceu com você.",
+      "Qual foi o seu primeiro crush e o que aconteceu?",
+      "Você já mentiu para não magoar alguém? Conte.",
+      "Já fez algo fora da sua zona de conforto e se arrependeu?",
+      "Qual foi o conselho mais estranho que recebeu?",
+      "Você já fingiu gostar de um presente? Qual?",
+      "Qual hábito seu você acha que ninguém nota?",
+      "Você já ficou com ciúmes de algo bobo? Conte.",
+      "Qual foi a maior gafe que já cometeu em público?",
+      "Você já teve um encontro decepcionante? O que rolou?",
+      "Qual foi a maior loucura que já fez por diversão?",
+      "Já quebrou alguma regra importante na escola/trabalho?",
+      "Qual foi seu emprego mais estranho?",
+      "Você já escondeu algo de um amigo por ciúme?",
+      "Qual foi a pior data que já marcou com alguém?",
+      "Você já fantasiou sobre alguém famoso?",
+      "Já cancelou planos no último minuto? Por quê?",
+      "Qual foi o maior susto que você levou?",
+      "Você já chorou por algo que depois achou bobo?",
+      "Qual foi a decisão mais impulsiva que tomou?",
+      "Você já teve um segredo com alguém que nunca contou?",
+      "Qual foi a maior mentira inofensiva que contou?",
+      "Você já enviou mensagem para a pessoa errada?",
+      "Qual é um hábito estranho que você tem ao dormir?",
+      "Você já fingiu estar doente para escapar de algo?",
+      "Já fez algo gentil por alguém sem querer ser notado?",
+      "Qual talento escondido você tem?",
+      "Qual foi a última coisa que te deixou realmente orgulhoso?",
+      "Você já se arrependeu de algo que disse em público?",
+      "Qual foi o elogio que mais te marcou?"
+    ],
+    desafio: [
+      "Ligue para um contato aleatório e diga algo engraçado (com permissão).",
+      "Envie um emoji romântico para um amigo (com aprovação).",
+      "Troque uma peça de roupa com alguém por 30 segundos (consentimento).",
+      "Leia em voz alta uma mensagem antiga e embaraçosa.",
+      "Faça 20 saltos no lugar.",
+      "Mostre sua última foto de galeria (apenas se confortável).",
+      "Cante uma música romântica olhando nos olhos de alguém por 20s.",
+      "Dê um elogio sincero a cada pessoa do grupo em 30s.",
+      "Mime uma situação de trabalho e faça os outros adivinharem.",
+      "Faça uma declaração dramática de amor para um objeto inanimado.",
+      "Tente equilibrar um livro na cabeça por 30s.",
+      "Envie uma mensagem engraçada para o último contato da sua lista.",
+      "Faça uma serenata improvisada com ruídos de boca.",
+      "Conte uma história inventada como se fosse verdade por 45s.",
+      "Dance um trecho de uma música que alguém escolher.",
+      "Cole um post-it com uma frase aleatória na testa por 20s.",
+      "Fale com um sotaque diferente por 40s.",
+      "Imite um apresentador de TV dando notícia importante por 30s.",
+      "Desafie alguém a te fazer perder a pose — mantenha por 20s.",
+      "Faça 15 segundos de poses dramáticas como em passarela.",
+      "Finja que vai fazer mágica e falhe com estilo.",
+      "Mostre algo escondido no bolso ou bolsa (sem expor privado).",
+      "Faça 10 flexões (ou uma alteração moderada se necessário).",
+      "Conte um segredo engraçado (inofensivo).",
+      "Dê um recado carinhoso para alguém e grave (com permissão).",
+      "Faça uma expressão de surpresa extrema e mantenha por 20s.",
+      "Cace algo vermelho na sala e traga em 20s.",
+      "Descreva a pessoa à sua esquerda sem dizer o nome por 30s.",
+      "Finja que está em um comercial de perfume por 30s."
+    ]
+  },
+  dificil: {
+    verdade: [
+      "Qual foi a maior mentira que contou para impressionar alguém?",
+      "Você já traiu ou foi traído? Conte sem muitos detalhes.",
+      "Qual segredo você guarda que te incomoda?",
+      "Qual foi o maior arrependimento da sua vida até agora?",
+      "Já se sentiu injustiçado por alguém próximo? O que rolou?",
+      "Qual erro financeiro você faria diferente hoje?",
+      "Você já cortou alguém da sua vida sem explicar? Por quê?",
+      "Qual foi a situação que mais mexeu com sua autoestima?",
+      "Já sofreu por amor? Fale a maior lição disso.",
+      "Você tem medo de compromisso? Por quê?",
+      "Qual hábito seu você sabe que deveria mudar agora?",
+      "Qual foi a despedida mais difícil que viveu?",
+      "Você já mentiu em um currículo ou entrevista? Conte.",
+      "Qual foi a maior decepção com um amigo?",
+      "Você já sabotou uma oportunidade por medo?",
+      "Qual medo secreto que ninguém imagina que você tem?",
+      "Já fez algo por vingança? O que aconteceu?",
+      "Qual foi a maior tentativa de recomeço da sua vida?",
+      "Você acha que perdoou alguém que não merecia? Explique.",
+      "Qual foi a maior perda para sua felicidade?",
+      "Você já escondeu um relacionamento sério da família?",
+      "Qual é a sua maior insegurança quando se relaciona?",
+      "Você se esforçou por alguém que não correspondia? Conte.",
+      "Qual trauma pequeno/medio que ainda aparece às vezes?",
+      "Você já decepcionou alguém que confiava em você?",
+      "Qual conselho você daria ao seu eu de 18 anos?",
+      "Já se arrependeu de não ter dito algo importante?",
+      "Qual foi a maior mentira que te marcaram profundamente?",
+      "Você tem dificuldade para confiar? Por quê?",
+      "Qual é o seu maior bloqueio para ser vulnerável?"
+    ],
+    desafio: [
+      "Conte em detalhes (sem expor terceiros) um momento que mudou você.",
+      "Envie uma mensagem pedindo desculpas a alguém que merece (se apropriado).",
+      "Analise uma decisão errada sua e diga como faria hoje.",
+      "Desafie-se: fale uma insegurança sua em voz alta por 45s.",
+      "Deixe alguém mandar uma publicação curta na sua rede (com aprovação).",
+      "Fale algo que sempre quis dizer a um amigo, de forma respeitosa.",
+      "Faça um elogio profundo e sincero a alguém presente.",
+      "Descreva o que te faz chorar e por quê, sem vergonha.",
+      "Proponha um brinde honesto sobre suas falhas e aprendizados.",
+      "Compartilhe um sonho que você tem e os passos para realizá-lo.",
+      "Confesse algo que ninguém aqui sabe sobre você (se confortável).",
+      "Tente convencer o grupo com um discurso honesto de 1 minuto.",
+      "Faça uma pequena performance contando uma experiência marcante.",
+      "Peça conselhos ao grupo sobre algo que te incomoda hoje.",
+      "Fale um medo e peça que alguém ajude com uma sugestão prática.",
+      "Desafie-se a listar cinco qualidades suas em 30s.",
+      "Demonstre gratidão pública a alguém do grupo com detalhes.",
+      "Descreva uma situação que te fez mudar de opinião radicalmente.",
+      "Coloque um objetivo pessoal para 30 dias e compartilhe com o grupo.",
+      "Ofereça ajuda real a alguém do grupo para algo específico.",
+      "Conte uma lembrança de infância que moldou você.",
+      "Revele um padrão ruim que você já está tentando quebrar.",
+      "Aceite um pequeno feedback do grupo e responda com sinceridade.",
+      "Apresente um mini plano de ação para mudar um hábito.",
+      "Leia uma carta breve que poderia ser enviada a si mesmo no futuro.",
+      "Faça uma mini meditação guiada de 30s para o grupo.",
+      "Desafie-se a dizer 'obrigado' para cada pessoa do grupo com um motivo.",
+      "Escreva e leia uma mensagem curta de perdão (se sentir necessidade).",
+      "Declare um compromisso público de melhorar algo pessoal."
+    ]
+  },
+  exp: {
+    verdade: [
+      "Qual é a sua fantasia mais ousada (resuma sem detalhes gráficos)?",
+      "Já beijou alguém que acabou sendo surpresa? Conte a situação.",
+      "Qual parte do corpo você acha mais atraente em alguém?",
+      "Você já mandou uma mensagem provocante para alguém? Como foi?",
+      "Qual foi o beijo mais memorável que já deu?",
+      "Qual situação te deixa mais atraído(a) instantaneamente?",
+      "Você já desejou alguém presente aqui? Quem (se confortável)?",
+      "Qual é um gesto romântico que sempre funciona com você?",
+      "Já teve um encontro que ficou mais quente do que esperava? Sem gráficos.",
+      "Qual foi o flerte mais sincero que você recebeu?",
+      "Você já teve crush por alguém proibido? Como lidou?",
+      "Qual roupa em outra pessoa te deixa sem palavras?",
+      "Você já ficou com alguém no primeiro encontro? Como aconteceu (sem detalhes)?",
+      "Qual atitude íntima alguém fez que te conquistou?",
+      "Você prefere carinho lento ou intensidade? Por quê?",
+      "Qual foi a maior química instantânea que sentiu com alguém?",
+      "Você já se pegou imaginando alguém em público? Como se conteve?",
+      "Qual é o seu tipo de beijo preferido (leve, profundo, surpreendente)?",
+      "Você já disse 'eu te adoro' por impulso? Como reagiram?",
+      "Qual segredo íntimo você manteria por toda a vida?",
+      "Você já fez algo picante por incentivo de álcool? Conte resumido.",
+      "O que te deixa mais confortável para se entregar a alguém?",
+      "Qual é a sua maior insegurança na intimidade?",
+      "Qual foi a situação mais ousada que aceitou e gostou?",
+      "Você já teve um flerte que virou amizade? Como foi a transição?",
+      "Tem algo que sempre quis experimentar com alguém? Diga resumido.",
+      "Você prefere jogos de sedução ou declarações diretas? Por quê?",
+      "Já recebeu convite explícito e recusou? Por qual motivo?",
+      "Qual é a lembrança íntima que te faz sorrir até hoje?",
+      "Você tem uma 'zona de conforto' íntima? O que incluiria?"
+    ],
+    desafio: [
+      "Beije a mão de alguém por 10 segundos (consentimento obrigatório).",
+      "Sussurre algo sedutor no ouvido de alguém por 10s (consentimento).",
+      "Envie uma mensagem flertando para um participante (com aprovação prévia).",
+      "Faça uma pose sensual por 20s e mantenha (brinque com teatralidade).",
+      "Desafie alguém a fazer uma massagem rápida no ombro (consentimento).",
+      "Faça um elogio íntimo (não gráfico) à pessoa à sua direita.",
+      "Imite um sussurro romântico e faça os outros avaliarem a performance.",
+      "Dance colado a alguém por 20s (consentimento) com trilha imaginária.",
+      "Deixe alguém escrever uma palavra no seu braço por 10s (aprovado).",
+      "Troque olhares intensos com alguém por 15 segundos.",
+      "Envie um áudio curto flertando para alguém do grupo (aprovado).",
+      "Faça um bilhete secreto com um elogio picante e entregue a uma pessoa (consentimento).",
+      "Sussurre uma fantasia em uma frase curta (não gráfica).",
+      "Finja um encontro romântico de 30s com alguém presente (teatral).",
+      "Faça um jogo de perguntas rápidas de flerte por 1 minuto.",
+      "Peça um beijo na bochecha com charme (consentimento) e receba.",
+      "Conte uma história sensual sem detalhes, com ênfase na emoção.",
+      "Desafie alguém a encenar um primeiro encontro por 30s.",
+      "Faça um elogio sobre perfume/cheiro de alguém (sensual leve).",
+      "Troque um recado carinhoso e autógrafo com alguém (teatral).",
+      "Finja enviar uma mensagem picante que nunca será enviada (dramático).",
+      "Faça 20 segundos de 'olhar penetrante' para alguém escolhido.",
+      "Dê um abraço demorado e reconfortante em alguém (consentimento).",
+      "Faça uma declaração de admiração em voz baixa para alguém.",
+      "Proponha um brinde a uma lembrança romântica compartilhada (real/inventada).",
+      "Descreva em uma frase o que te atrai numa pessoa, sem detalhes íntimos.",
+      "Improvise um pequeno diálogo de flerte com tom divertido por 30s.",
+      "Aceite ser fotografado(a) fazendo uma pose sensual (apenas se confortável).",
+      "Faça uma serenata curta e sugestiva, sem conteúdo explícito."
+    ]
+  }
+};
+
+// localStorage keys
+const STORAGE_KEY = 'voj_lists_v2';
+
+// estado
+let lists = loadLists();
+let mode = 'facil';
+let history = [];
+let last = null;
+let players = []; // user can add players; if empty we show 'Aleatório'
+
+// elementos
+const modeBtns = document.querySelectorAll('.mode-btn');
+const chip = document.getElementById('current-mode-chip');
+const promptEl = document.getElementById('prompt');
+const truthBtn = document.getElementById('truth-btn');
+const dareBtn = document.getElementById('dare-btn');
+const spinBtn = document.getElementById('spin-btn');
+const currentPlayerEl = document.getElementById('current-player');
+const lastTypeEl = document.getElementById('last-type');
+const historyEl = document.getElementById('history');
+const modalBack = document.getElementById('modal-back');
+const modal = document.getElementById('modal');
+const modalBody = document.getElementById('modal-body');
+const modalOk = document.getElementById('modal-ok');
+const modalCancel = document.getElementById('modal-cancel');
+const editBtn = document.getElementById('edit-custom');
+const addTruthBtn = document.getElementById('add-truth');
+const addDareBtn = document.getElementById('add-dare');
+const playersBtn = document.getElementById('players-setup');
+const rulesBtn = document.getElementById('rules-btn');
+const skipBtn = document.getElementById('skip-btn');
+const undoBtn = document.getElementById('undo-btn');
+const clearHistoryBtn = document.getElementById('clear-history');
+const timerSelect = document.getElementById('timer-select');
+
+// --- inicialização ---
+function init(){
+  modeBtns.forEach(b => {
+    b.addEventListener('click', () => setMode(b.dataset.mode));
+  });
+  truthBtn.addEventListener('click', () => pick('verdade'));
+  dareBtn.addEventListener('click', () => pick('desafio'));
+  spinBtn.addEventListener('click', () => randomPick());
+  editBtn.addEventListener('click', openEditModal);
+  addTruthBtn.addEventListener('click', () => quickAdd('verdade'));
+  addDareBtn.addEventListener('click', () => quickAdd('desafio'));
+  playersBtn.addEventListener('click', openPlayersModal);
+  rulesBtn.addEventListener('click', openRules);
+  skipBtn.addEventListener('click', skip);
+  undoBtn.addEventListener('click', undo);
+  clearHistoryBtn.addEventListener('click', () => { history = []; renderHistory(); });
+  modalCancel.addEventListener('click', closeModal);
+  modalBack.addEventListener('click', (e) => { if(e.target === modalBack) closeModal(); });
+  modalOk.addEventListener('click', () => {
+    if(modal._ok) modal._ok();
+    closeModal();
+  });
+  renderModeUI();
+  renderHistory();
+  updatePlayerUI();
+}
+init();
+
+// --- helpers ---
+function saveLists(){
+  try{
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(lists));
+  }catch(e){ console.warn('Erro ao salvar listas', e); }
+}
+function loadLists(){
+  try{
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if(raw) return JSON.parse(raw);
+  }catch(e){}
+  return JSON.parse(JSON.stringify(defaultLists)); // clone
+}
+function renderModeUI(){
+  modeBtns.forEach(b => b.classList.toggle('active', b.dataset.mode === mode));
+  chip.textContent = 'Modo: ' + ({facil:'Fácil', medio:'Médio', dificil:'Difícil', exp:'Explícito'}[mode] || mode);
+  // se modo exp, mostrar aviso ao selecionar pela primeira vez
+  if(mode === 'exp') {
+    showModal(
+      "Modo Explícito — Aviso",
+      "O modo 'Explícito' traz perguntas e desafios íntimos/picantes (mais ousados, sem descrições gráficas). Só continue se todos os participantes forem maiores de 18 anos e houver CONSENTIMENTO. Deseja continuar?",
+      () => {}
+    );
+  }
+}
+
+// pick logic
+function pick(kind){
+  const arr = (lists[mode] && lists[mode][kind === 'verdade' ? 'verdade' : 'desafio']) || [];
+  if(!arr.length){ promptEl.textContent = "Lista vazia — adicione itens personalizados."; return; }
+  const idx = Math.floor(Math.random()*arr.length);
+  const item = arr[idx];
+  showPrompt(item, kind);
+}
+function randomPick(){
+  // random player + random type
+  const type = Math.random() < 0.5 ? 'verdade' : 'desafio';
+  // random player name
+  const player = players.length ? players[Math.floor(Math.random()*players.length)] : 'Aleatório';
+  currentPlayerEl.textContent = player;
+  pick(type);
+}
+function showPrompt(text, kind){
+  last = {text, kind, mode, player:currentPlayerEl.textContent, timer: timerSelect.value};
+  promptEl.textContent = text;
+  lastTypeEl.textContent = kind === 'verdade' ? 'Verdade' : 'Desafio';
+  history.unshift({
+    when: new Date().toISOString(),
+    ...last
+  });
+  renderHistory();
+  if(timerSelect.value && Number(timerSelect.value) > 0 && kind === 'desafio'){
+    startTimer(Number(timerSelect.value));
+  }
+}
+function startTimer(seconds){
+  let remaining = seconds;
+  const original = promptEl.textContent;
+  const tick = () => {
+    if(remaining <= 0){ promptEl.textContent = original + " — Tempo esgotou!"; return; }
+    promptEl.textContent = original + " — Tempo: " + remaining + "s";
+    remaining--;
+    timerId = setTimeout(tick, 1000);
+  };
+  let timerId = setTimeout(tick, 1000);
+}
+
+// modais
+function showModal(title, body, onOk){
+  modalBody.innerHTML = "<strong>" + title + "</strong><div style='margin-top:8px'>"+ body +"</div>";
+  modalBack.style.display = 'flex';
+  modal._ok = onOk;
+  modalOk.textContent = 'OK';
+  modalCancel.textContent = 'Fechar';
+}
+function closeModal(){ modalBack.style.display = 'none'; modal._ok = null; }
+
+// editar listas (simples editor)
+function openEditModal(){
+  const modeName = ({facil:'Fácil', medio:'Médio', dificil:'Difícil', exp:'Explícito'}[mode] || mode);
+  let html = "<div class='muted'>Editando listas do modo <strong>"+modeName+"</strong>. Separe itens por linhas.</div>";
+  html += "<div style='margin-top:10px'><label>Verdade (uma por linha)</label><textarea id='edit-truths' style='width:100%;height:180px;margin-top:6px;border-radius:8px;padding:8px;background:rgba(255,255,255,0.02);color:inherit;border:1px solid rgba(255,255,255,0.03)'>"
+    + (lists[mode].verdade.join("\n")) + "</textarea></div>";
+  html += "<div style='margin-top:10px'><label>Desafio (uma por linha)</label><textarea id='edit-dares' style='width:100%;height:180px;margin-top:6px;border-radius:8px;padding:8px;background:rgba(255,255,255,0.02);color:inherit;border:1px solid rgba(255,255,255,0.03)'>"
+    + (lists[mode].desafio.join("\n")) + "</textarea></div>";
+  showModal("Editar listas — " + modeName, html, () => {
+    const t = document.getElementById('edit-truths').value.split('\n').map(s=>s.trim()).filter(Boolean);
+    const d = document.getElementById('edit-dares').value.split('\n').map(s=>s.trim()).filter(Boolean);
+    lists[mode].verdade = t;
+    lists[mode].desafio = d;
+    saveLists();
+  });
+  modalOk.textContent = 'Salvar';
+  modalCancel.textContent = 'Cancelar';
+}
+
+// quick add
+function quickAdd(kind){
+  const tipo = kind === 'verdade' ? 'Verdade' : 'Desafio';
+  showModal("Adicionar " + tipo, "<input id='quick-input' placeholder='"+tipo+"...' style='width:100%;padding:10px;border-radius:8px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);color:inherit' />", () => {
+    const val = document.getElementById('quick-input').value.trim();
+    if(!val) return;
+    lists[mode][kind === 'verdade' ? 'verdade' : 'desafio'].unshift(val);
+    saveLists();
+  });
+  modalOk.textContent = 'Adicionar';
+  modalCancel.textContent = 'Cancelar';
+}
+
+// players modal
+function openPlayersModal(){
+  let html = "<div class='muted'>Adicione os nomes dos jogadores (separe por vírgula).</div>";
+  html += "<div style='margin-top:8px'><input id='players-input' placeholder='Ex: João, Maria, Ana' style='width:100%;padding:10px;border-radius:8px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);color:inherit' value='"
+    + players.join(', ') + "'></div>";
+  showModal("Jogadores", html, () => {
+    const raw = document.getElementById('players-input').value.trim();
+    players = raw ? raw.split(',').map(s=>s.trim()).filter(Boolean) : [];
+    updatePlayerUI();
+  });
+  modalOk.textContent = 'Salvar';
+}
+
+function updatePlayerUI(){
+  currentPlayerEl.textContent = players.length ? players[0] : 'Aleatório';
+  // show list small
+  const pList = players.length ? players.join(' • ') : 'Nenhum (Aleatório)';
+  document.getElementById('current-mode-chip').title = pList;
+}
+
+// rules
+function openRules(){
+  const html = "<p class='muted'>Regras rápidas:</p><ul style='margin-top:6px'><li>Respeito e consentimento são obrigatórios.</li><li>Se alguém não quiser responder ou cumprir, aceite passar sem pressionar.</li><li>Explícito é recomendado apenas para grupo de adultos (maiores de 18 anos).</li><li>Use o botão <strong>Editar listas</strong> para personalizar.</li></ul>";
+  showModal("Regras e segurança", html, () => {});
+  modalOk.textContent = 'Fechar';
+  modalCancel.style.display = 'none';
+}
+
+// skip / undo
+function skip(){ // pular — salva no histórico como pulado
+  if(!last) { promptEl.textContent = "Nada a pular ainda."; return; }
+  history.unshift({when:new Date().toISOString(), player:last.player, kind:'pulado', text: 'PULADO: ' + last.text, mode:last.mode});
+  last = null;
+  renderHistory();
+  promptEl.textContent = "Pulado. Próximo!";
+  lastTypeEl.textContent = '—';
+}
+function undo(){
+  if(history.length === 0) { promptEl.textContent = "Nada para desfazer."; return; }
+  const removed = history.shift();
+  renderHistory();
+  promptEl.textContent = "Última ação desfeita.";
+}
+
+// history render
+function renderHistory(){
+  historyEl.innerHTML = '';
+  history.slice(0,40).forEach(h => {
+    const el = document.createElement('div');
+    el.className = 'hist-item';
+    const time = new Date(h.when).toLocaleTimeString();
+    el.innerHTML = "<strong>"+(h.kind === 'verdade' ? 'V' : h.kind === 'desafio' ? 'D' : h.kind === 'pulado' ? 'P' : 'R')+"</strong> "
+      + "<span style='opacity:.9'>"+ (h.player || 'Aleatório') + ":</span> "
+      + "<span style='display:block;margin-top:6px'>"+ h.text +"</span>"
+      + "<div style='margin-top:6px;font-size:12px;color:var(--muted)'>"+ time + " — modo: "+ h.mode +"</div>";
+    historyEl.appendChild(el);
+  });
+}
+
+// keyboard shortcuts (mobile friendly fallback)
+document.addEventListener('keydown', (e) => {
+  if(e.key === 't') pick('verdade');
+  if(e.key === 'd') pick('desafio');
+  if(e.key === ' ') randomPick();
+});
+
+// small UI niceties: long-press spin to choose player
+let pressTimer;
+spinBtn.addEventListener('touchstart', (e) => {
+  pressTimer = setTimeout(() => {
+    // choose player
+    if(players.length){
+      // pick next player in list
+      const current = currentPlayerEl.textContent;
+      let idx = players.indexOf(current);
+      idx = (idx + 1) % players.length;
+      currentPlayerEl.textContent = players[idx];
+    }
+  }, 700);
+});
+spinBtn.addEventListener('touchend', () => clearTimeout(pressTimer));
+spinBtn.addEventListener('mousedown', (e)=> {
+  pressTimer = setTimeout(() => {
+    if(players.length){
+      const current = currentPlayerEl.textContent;
+      let idx = players.indexOf(current);
+      idx = (idx + 1) % players.length;
+      currentPlayerEl.textContent = players[idx];
+    }
+  }, 700);
+});
+spinBtn.addEventListener('mouseup', ()=> clearTimeout(pressTimer));
+
+// expose setMode to buttons
+function setMode(m){
+  mode = m;
+  renderModeUI();
+}
+
+window.setMode = setMode;
+

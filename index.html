@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+<link rel="stylesheet" href="style.css">
+<title>Verdade ou Desafio — Jô (Completo)</title>
+</head>
+<body>
+<div class="app" role="application" aria-label="Verdade ou Desafio Jô">
+  <header>
+    <div class="brand">
+      <div class="logo">504</div>
+      <div>
+        <h1>Verdade ou Desafio — 504 (Completo)</h1>
+        <p class="lead">Modos: Fácil • Médio • Difícil • Explícito — jogue com responsabilidade</p>
+      </div>
+    </div>
+    <div style="text-align:right">
+      <div class="chip" id="current-mode-chip">Modo: Fácil</div>
+    </div>
+  </header>
+
+  <main>
+    <section class="big-card" aria-labelledby="mode-select">
+      <div id="mode-select" class="meta">
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+          <button class="btn mode-btn active" data-mode="facil">Fácil</button>
+          <button class="btn mode-btn" data-mode="medio">Médio</button>
+          <button class="btn mode-btn" data-mode="dificil">Difícil</button>
+          <button class="btn mode-btn" data-mode="exp">Explícito</button>
+          <div class="muted" style="margin-left:8px">Toque no modo para alterar</div>
+        </div>
+        <div class="actions">
+          <button class="btn ghost small" id="edit-custom">Editar listas</button>
+          <button class="btn small" id="players-setup">Jogadores</button>
+        </div>
+      </div>
+
+      <div id="prompt" class="prompt" aria-live="polite">Toque em "Sortear" para começar — escolha Verdade ou Desafio!</div>
+
+      <div class="meta">
+        <div style="display:flex;gap:8px;align-items:center">
+          <div class="players">
+            <div class="muted">Jogador:</div>
+            <div id="current-player" class="chip">Aleatório</div>
+          </div>
+          <div class="muted">Última rodada:</div>
+          <div id="last-type" class="chip">—</div>
+        </div>
+        <div class="actions">
+          <button class="btn" id="truth-btn">Verdade</button>
+          <button class="btn" id="dare-btn">Desafio</button>
+          <button class="btn primary" id="spin-btn" title="Sortear aleatório">Sortear</button>
+        </div>
+      </div>
+
+      <div class="row" style="justify-content:space-between;align-items:center">
+        <div style="display:flex;gap:8px;align-items:center">
+          <div class="muted">Tempo para cumprir desafio:</div>
+          <select id="timer-select" class="btn small">
+            <option value="0">Sem tempo</option>
+            <option value="15">15s</option>
+            <option value="30" selected>30s</option>
+            <option value="60">60s</option>
+            <option value="120">2 min</option>
+          </select>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center">
+          <button class="btn small" id="skip-btn">Pular</button>
+          <button class="btn small" id="undo-btn">Desfazer</button>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:8px;align-items:center;justify-content:space-between">
+        <div class="muted">Histórico</div>
+        <div><button id="clear-history" class="btn ghost small">Limpar</button></div>
+      </div>
+      <div class="result-history" id="history"></div>
+    </section>
+
+    <section style="display:flex;gap:12px;flex-wrap:wrap">
+      <div style="flex:1;min-width:220px" class="big-card">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div><strong>Personalizar</strong><div class="muted" style="font-size:13px">Adicione verdades e desafios seus</div></div>
+          <div><button id="add-truth" class="btn small">+ Verdade</button> <button id="add-dare" class="btn small">+ Desafio</button></div>
+        </div>
+        <div class="muted" style="font-size:13px">Os itens adicionados aparecem só localmente no seu navegador.</div>
+      </div>
+
+      <div style="flex:1;min-width:220px" class="big-card">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div><strong>Regras rápidas</strong><div class="muted" style="font-size:13px">Toque em um modo → escolha Verdade/Desafio → cumpra ou passe</div></div>
+          <div><button id="rules-btn" class="btn ghost small">Ver</button></div>
+        </div>
+        <div class="muted" style="font-size:13px">Explícito é adulto — exige confirmação. Seja sempre consensual.</div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    Feito com ❤️ — divirta-se com responsabilidade. Modo Explícito contém conteúdo íntimo; é sua opção habilitá-lo.
+  </footer>
+</div>
+
+<!-- Modal area -->
+<div class="modal-back" id="modal-back">
+  <div class="modal" role="dialog" aria-modal="true" id="modal">
+    <div id="modal-title"><strong>Aviso</strong></div>
+    <div id="modal-body" class="muted" style="margin-top:10px">Texto...</div>
+    <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:14px">
+      <button class="btn ghost" id="modal-cancel">Fechar</button>
+      <button class="btn primary" id="modal-ok">OK</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
